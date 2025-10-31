@@ -11,6 +11,7 @@ export default function Courses() {
     {
       icon: Scissors,
       title: "반영구/SMP",
+      link: "/courses/semi-permanent-smp",
       description:
         "섬세한 디자인 감각과 전문적인 기술력을 바탕으로 반영구 화장 및 두피 문신 전문가로서의 길을 제시합니다. 아름다움을 디자인하는 정교한 기술을 배우실 수 있습니다.",
       color: "from-pink-500 to-rose-500",
@@ -61,8 +62,9 @@ export default function Courses() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {courses.map((course, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={course.link || "#courses"}
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={
                 isInView
@@ -70,7 +72,7 @@ export default function Courses() {
                   : { opacity: 0, y: 50, scale: 0.9 }
               }
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="webzine-card p-6 group"
+              className="webzine-card p-6 group block hover:shadow-lg transition-shadow"
             >
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
@@ -90,7 +92,7 @@ export default function Courses() {
               <p className="text-slate-600 leading-relaxed">
                 {course.description}
               </p>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import NavigationCategory from "./navigation-category";
 
 const slides = [
   {
@@ -50,6 +51,9 @@ export default function HeroCarousel() {
 
   return (
     <section className="relative h-[70vh] overflow-hidden">
+      {/* 카테고리 네비게이션 오버레이 */}
+      <NavigationCategory />
+      
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
           <div

@@ -11,6 +11,7 @@ export default function Certification() {
     {
       icon: Award,
       title: "헤어 국가자격증",
+      link: "/courses/hair-certification",
       description:
         "미용사(일반) 국가자격증 취득을 위한 필기 및 실기 전 과정을 체계적으로 교육하여 높은 합격률을 자랑합니다.",
       features: [
@@ -23,6 +24,7 @@ export default function Certification() {
     {
       icon: BookOpen,
       title: "메이크업 국가자격증",
+      link: "/courses/makeup-certification",
       description:
         "메이크업 국가자격증 취득을 목표로 하는 분들을 위해, 각 과제별 맞춤형 집중 지도로 합격의 문턱을 넘도록 지원합니다.",
       features: [
@@ -35,6 +37,7 @@ export default function Certification() {
     {
       icon: Users,
       title: "이용사 국가자격증",
+      link: "/courses/eyebrow-certification",
       description:
         "이용 분야의 전문성을 인정받는 이용사 자격증 취득을 위한 이론 및 실기 과정을 전문적으로 지도합니다.",
       features: ["이론 교육", "실기 연습", "전문 지도", "자격증 취득"],
@@ -62,14 +65,15 @@ export default function Certification() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
           {certifications.map((cert, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={cert.link}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="webzine-card p-8"
+              className="webzine-card p-10 block hover:shadow-lg transition-shadow"
             >
               <motion.div
                 initial={{ scale: 0, rotate: -90 }}
@@ -77,17 +81,17 @@ export default function Certification() {
                   isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -90 }
                 }
                 transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-                className="inline-flex items-center justify-center w-16 h-16 bg-slate-800 text-white rounded-lg mb-6"
+                className="inline-flex items-center justify-center w-16 h-16 bg-slate-800 text-white rounded-lg mb-8"
               >
                 <cert.icon className="w-8 h-8" />
               </motion.div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">
                 {cert.title}
               </h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-slate-600 mb-8 leading-relaxed">
                 {cert.description}
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {cert.features.map((feature, featureIndex) => (
                   <motion.li
                     key={featureIndex}
@@ -106,7 +110,7 @@ export default function Certification() {
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 
@@ -141,6 +145,3 @@ export default function Certification() {
     </section>
   );
 }
-
-
-
